@@ -136,6 +136,56 @@
   .ptable td.rem{text-align:left;font-size:7px;padding-left:3px;}
   .ppage-sign{flex:0 0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;padding-top:0;font-size:9.5px;}
   .ppage-sign div div{margin-bottom:7px;}
+/* ===== Trends + External Service additions (screen only; paper form untouched) ===== */
+.tr-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px;}
+.tr-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+.tr-card .k{font-size:11px;font-weight:600;color:var(--ink-soft);}
+.tr-card .v{font-size:24px;font-weight:700;margin:2px 0;}
+.tr-card .s{font-size:12px;color:var(--ink-soft);}
+.delta{font-size:12px;font-weight:700;color:var(--ink-soft);}
+.delta.up{color:var(--red);} .delta.down{color:var(--green);}
+.tr-sec{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px;}
+.tr-sec h3{margin:0 0 10px;font-size:14px;}
+.tr-scroll{overflow-x:auto;}
+.tr-tbl{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px;}
+.tr-tbl th,.tr-tbl td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:center;}
+.tr-tbl th:first-child,.tr-tbl td:first-child{text-align:left;}
+.tr-tbl tr.sum td{font-weight:700;background:var(--paper);}
+.tr-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;margin-top:6px;}
+.tr-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;}
+.bar-t{fill:var(--ink);font:600 11px Inter,sans-serif;text-anchor:middle;}
+.bar-m{fill:var(--ink-soft);font:500 11px Inter,sans-serif;text-anchor:middle;}
+.bar-g{stroke:var(--line);stroke-width:1;}
+.hot{display:grid;grid-template-columns:minmax(120px,1.4fr) 3fr 36px;gap:8px;align-items:center;font-size:12.5px;margin-bottom:6px;}
+.hot .track{background:var(--paper);border-radius:4px;height:12px;overflow:hidden;}
+.hot .fill{background:var(--red);height:100%;}
+.alert-item{background:var(--red-100);border:1px solid var(--red);color:var(--red);border-radius:8px;padding:7px 10px;font-size:12.5px;margin-bottom:6px;font-weight:600;}
+.ok-item{background:var(--green-100);color:var(--green-800);border-radius:8px;padding:7px 10px;font-size:12.5px;font-weight:600;}
+.svc-line{font-size:12.5px;margin-bottom:4px;}
+.xrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.tick{font-family:inherit;font-weight:700;font-size:13px;min-width:78px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;background:var(--paper);color:var(--ink-soft);cursor:pointer;}
+.tick.on{background:var(--green);border-color:var(--green);color:#fff;}
+.xrow .remarks-input{flex:1;min-width:140px;margin-top:0;}
+.chips{display:flex;gap:6px;flex-wrap:wrap;}
+.chip{font-family:inherit;font-size:13px;font-weight:600;padding:8px 14px;border:1px solid var(--line-strong);border-radius:20px;background:#fff;color:var(--ink-soft);cursor:pointer;}
+.chip.on{background:var(--green-100);border-color:var(--green);color:var(--green-800);}
+.xfield{display:flex;flex-direction:column;gap:4px;min-width:160px;flex:1;}
+.xfield label{font-size:11px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;}
+.xfield input,.settings textarea{font-family:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line-strong);border-radius:6px;background:#fff;color:var(--ink);width:100%;}
+.settings textarea{min-height:110px;}
+.xlink{font-size:12.5px;font-weight:600;color:var(--green-800);}
+.xhead{border:1.2px solid #222;padding:8px;text-align:center;margin-bottom:6px;}
+.xhead b{font-size:13px;display:block;}
+.xhead span{font-size:11px;font-weight:600;color:#1B4A36;}
+.xmeta{display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-bottom:6px;flex-wrap:wrap;}
+.xtable{width:100%;border-collapse:collapse;font-size:10.5px;}
+.xtable th,.xtable td{border:1px solid #444;padding:3px 5px;text-align:center;}
+.xtable th{background:#eee;}
+.xtable td.xa,.xtable td.xr{text-align:left;}
+.xsign{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px;font-size:10.5px;}
+.xsign div div{margin-bottom:6px;}
+.subtab{flex:1;min-width:120px;text-align:center;padding:10px 8px;border:1px solid var(--line-strong);border-radius:8px;background:var(--card);font-weight:600;font-size:13px;color:var(--ink-soft);cursor:pointer;user-select:none;}
+.subtab.active{background:var(--ink);border-color:var(--ink);color:#fff;}
 </style>
 </head>
 <body>
@@ -162,6 +212,8 @@
   <div class="tabs">
     <div class="tab active" data-panel="fill">Fill checklist</div>
     <div class="tab" data-panel="records">Records / Print</div>
+    <div class="tab" data-panel="trends">Trends</div>
+    <div class="tab" data-panel="ext">External Service</div>
     <div class="tab" data-panel="settings">Google Sheet</div>
   </div>
 
@@ -219,6 +271,105 @@
     <div class="empty-note" id="entryList">Select a month and tap "Show records".</div>
   </div>
 
+  <div class="panel" id="panel-trends">
+    <div class="controls">
+      <div class="field"><label>Year</label><input type="number" id="trYear" min="2024" max="2100" style="width:96px;"></div>
+      <div class="field">
+        <label>Quarter</label>
+        <div class="weekpick" id="trQuarter">
+          <button data-q="1">Q1 Jan–Mar</button><button data-q="2">Q2 Apr–Jun</button>
+          <button data-q="3">Q3 Jul–Sep</button><button data-q="4">Q4 Oct–Dec</button>
+        </div>
+      </div>
+      <div class="field"><label>Compare with</label>
+        <select id="trCompare" style="font-family:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line-strong);border-radius:6px;background:#fff;">
+          <option value="prev">Previous quarter</option>
+          <option value="ly">Same quarter last year</option>
+          <option value="none">No comparison</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="trShowBtn">Show trend</button>
+    </div>
+    <div id="trendOut"><div class="empty-note">Pick a quarter and tap "Show trend".</div></div>
+  </div>
+
+  <div class="panel" id="panel-ext">
+    <div class="apibar" id="extBanner">Checking external service status...</div>
+    <div class="tabs" style="margin-bottom:12px;">
+      <div class="subtab active" id="xsForm">New / edit service</div>
+      <div class="subtab" id="xsList">Service records</div>
+    </div>
+
+    <div id="extFormWrap">
+      <div class="controls">
+        <div class="xfield"><label>Service date</label><input type="date" id="extDate"></div>
+        <div class="xfield"><label>Company</label><input type="text" id="extCompany" placeholder="Pest control company"></div>
+        <div class="xfield"><label>Technician</label><input type="text" id="extTech" placeholder="Technician name"></div>
+        <div class="field" style="margin-left:auto;"><span class="status-pill" id="extStatus">New service</span></div>
+      </div>
+
+      <div class="footer-block" style="margin-top:0;margin-bottom:14px;">
+        <div class="signoff-title">Type of service</div>
+        <div class="weekpick" id="extTypePick"><button type="button" data-t="Routine">Routine</button><button type="button" data-t="Ad hoc">Ad hoc</button></div>
+        <div class="signoff-title" style="margin-top:12px;">Treatment</div>
+        <div class="chips" id="extTreatChips"></div>
+        <div class="xfield" style="margin-top:10px;"><label>Details / reason</label><input type="text" id="extDetails" placeholder="e.g. fumigation of warehouse after rodent sighting"></div>
+      </div>
+
+      <div class="controls" style="align-items:center;">
+        <button class="btn" id="extCopyBtn">Copy from last service</button>
+        <button class="btn" id="extAllSprayBtn">Tick all Spray</button>
+        <button class="btn" id="extAllTrbsBtn">Tick all TRBS/TRGS</button>
+        <button class="btn" id="extClearBtn">Clear ticks</button>
+      </div>
+
+      <div class="arealist" id="extAreaList"></div>
+
+      <div class="footer-block">
+        <div class="signoff-title">Products used</div>
+        <div class="chips" id="extChips"></div>
+      </div>
+
+      <div class="footer-block">
+        <div id="extOpenList"></div>
+        <div class="signoff-title">Contractor recommendations / follow-up</div>
+        <div id="extActions"></div>
+        <button class="btn" id="extAddActionBtn" style="margin-top:6px;">Add recommendation</button>
+      </div>
+
+      <div class="footer-block">
+        <div class="signoff-title">Contractor's service report</div>
+        <input type="file" id="extFile" accept="image/*,application/pdf">
+        <div class="hint" id="extReportInfo"></div>
+      </div>
+
+      <div class="footer-block">
+        <div class="signoff" style="grid-template-columns:1fr;">
+          <div class="signoff-group">
+            <div class="signoff-title">Received by</div>
+            <label>Name (signs automatically)</label><input type="text" id="extRName" class="sig-input" placeholder="Type your name to sign">
+            <label>Position</label><input type="text" id="extRPos">
+          </div>
+        </div>
+      </div>
+
+      <div class="actionbar">
+        <button class="btn btn-primary" id="extSaveBtn">Save (online)</button>
+        <button class="btn" id="extPrintBtn">Print</button>
+        <button class="btn" id="extNewBtn">New service</button>
+        <button class="btn btn-danger" id="extDeleteBtn">Delete this service</button>
+      </div>
+    </div>
+
+    <div id="extListWrap" style="display:none;">
+      <div class="controls">
+        <div class="field"><label>Select month</label><input type="month" id="extReportMonth"></div>
+        <button class="btn" id="extLoadBtn">Show services</button>
+      </div>
+      <div class="empty-note" id="extEntryList">Select a month and tap "Show services".</div>
+    </div>
+  </div>
+
   <div class="panel" id="panel-settings">
     <div class="settings">
       <div style="font-weight:700;margin-bottom:10px;">Google Sheet connection</div>
@@ -233,6 +384,24 @@
         2. Copy all the code from <code>pest_control_apps_script.gs</code>, paste it in, then <b>Deploy → New deployment → Web app</b>, "Who has access" = Anyone<br>
         3. Copy the deployment URL, paste it above, tap Save URL.
       </div>
+    </div>
+    <div class="settings">
+      <div style="font-weight:700;margin-bottom:10px;">External service connection</div>
+      <div class="settings-row">
+        <input type="text" id="extUrlInput" placeholder="Paste the External Service Apps Script Web App URL here">
+        <button class="btn btn-primary" id="saveExtUrlBtn">Save URL</button>
+      </div>
+      <div class="hint">
+        Separate web app from the one above. Setup: go to <b>script.google.com → New project</b>, paste the code from <code>external_service_apps_script.gs</code>, then <b>Deploy → New deployment → Web app</b> ("Who has access" = Anyone) and paste the URL here. Records go to a new tab <code>ExternalService</code> in the same Google Sheet.
+      </div>
+    </div>
+    <div class="settings">
+      <div style="font-weight:700;margin-bottom:10px;">External products (pick-list)</div>
+      <textarea id="extProductsInput" placeholder="One product per line"></textarea>
+      <div class="settings-row" style="margin-top:8px;">
+        <button class="btn btn-primary" id="saveProductsBtn">Save products</button>
+      </div>
+      <div class="hint">QA sets this once. Operators only tick the products used; no quantities to type.</div>
     </div>
   </div>
 
@@ -670,6 +839,699 @@ document.querySelectorAll('.tab').forEach(tab=>{
     el('panel-'+tab.dataset.panel).classList.add('active');
   });
 });
+
+
+// ================= TRENDS + EXTERNAL SERVICE (online only, not part of the printed form) =================
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const PEST_COLORS = {rat:'#B23A2E', flies:'#B9791A', cockroaches:'#2E7D5B', ants:'#4A6FA5', others:'#7A6F8E'};
+const DEFAULT_EXT_API_URL = '';   // paste the External Service web app URL here if you want it built in
+let extApiUrl = safeGet('pest_ext_url') || DEFAULT_EXT_API_URL;
+const extStore = {};              // fallback when no URL (this session only)
+let extProducts = [];
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function qMonths(year, q){ return [0,1,2].map(i=> year + '-' + pad2((q-1)*3 + 1 + i)); }
+function qLabel(year, q){ return 'Q' + q + ' ' + year; }
+function monthLabel(m){ const p = m.split('-'); return MONTH_NAMES[+p[1]-1] + ' ' + p[0]; }
+function nowQuarter(){ const d = new Date(); return {year:d.getFullYear(), q:Math.floor(d.getMonth()/3)+1}; }
+function isQuarterInProgress(year, q){
+  const n = nowQuarter();
+  return (year > n.year) || (year === n.year && q >= n.q);
+}
+
+// ---------------- Trend maths ----------------
+function monthStats(month, records){
+  const byPest = {}; PESTS.forEach(p=> byPest[p.k] = 0);
+  const areaHits = {};   // area -> number of visits with at least one finding
+  const weeks = new Set(); let visits = 0, total = 0;
+  records.forEach(rec=>{
+    weeks.add(rec.week);
+    (rec.dates||[]).forEach(d=>{ if(d) visits++; });
+    (rec.areas||[]).forEach(row=>{
+      DATE_KEYS.forEach(dk=>{
+        let hit = false;
+        PESTS.forEach(p=>{
+          const v = pestVal((row[dk]||{})[p.k]).trim();
+          if(!v) return;
+          let n = 1;
+          if(p.k !== 'others') n = /^\d+$/.test(v) ? parseInt(v,10) : 1;
+          if(n > 0){ byPest[p.k] += n; total += n; hit = true; }
+        });
+        if(hit) areaHits[row.name] = (areaHits[row.name]||0) + 1;
+      });
+    });
+  });
+  return {month, total, byPest, areaHits, weeks:weeks.size, visits};
+}
+
+async function loadQuarterStats(year, q){
+  const months = qMonths(year, q);
+  const recs = await Promise.all(months.map(m=> apiListMonth(m)));
+  const ms = months.map((m,i)=> monthStats(m, recs[i]||[]));
+  const byPest = {}; PESTS.forEach(p=> byPest[p.k] = ms.reduce((s,x)=> s + x.byPest[p.k], 0));
+  const areaHits = {};
+  ms.forEach(x=> Object.keys(x.areaHits).forEach(a=> areaHits[a] = (areaHits[a]||0) + x.areaHits[a]));
+  return {year, q, months:ms, byPest, areaHits,
+    total: ms.reduce((s,x)=> s + x.total, 0),
+    weeks: ms.reduce((s,x)=> s + x.weeks, 0),
+    visits: ms.reduce((s,x)=> s + x.visits, 0)};
+}
+
+function deltaHtml(cur, prev){
+  if(prev === null || prev === undefined) return '';
+  if(prev === 0) return cur === 0 ? '<span class="delta">no change</span>' : '<span class="delta up">new (was 0)</span>';
+  const pct = Math.round((cur - prev) / prev * 100);
+  if(pct === 0) return '<span class="delta">no change</span>';
+  return '<span class="delta ' + (pct>0?'up':'down') + '">' + (pct>0?'▲ ':'▼ ') + Math.abs(pct) + '%</span>';
+}
+
+function niceMax(v){
+  if(v <= 5) return 5;
+  const p = Math.pow(10, Math.floor(Math.log10(v))), n = v / p;
+  return (n<=1 ? 1 : n<=2 ? 2 : n<=5 ? 5 : 10) * p;
+}
+
+function barChartSvg(ms){
+  const W=560, H=240, pl=40, pr=10, pt=26, pb=36, iw=W-pl-pr, ih=H-pt-pb, bw=76;
+  const top = niceMax(Math.max(1, ...ms.map(m=> m.total)));
+  const y = v => pt + ih - (v/top)*ih;
+  let s = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Findings per month, stacked by pest type">';
+  [0, top/2, top].forEach(g=>{
+    s += '<line class="bar-g" x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y(g)+'" y2="'+y(g)+'"/>';
+    s += '<text class="bar-m" x="'+(pl-6)+'" y="'+(y(g)+4)+'" style="text-anchor:end">'+Math.round(g*10)/10+'</text>';
+  });
+  ms.forEach((m,i)=>{
+    const cx = pl + iw/ms.length*(i+0.5), x = cx - bw/2;
+    if(m.weeks === 0){
+      s += '<text class="bar-m" x="'+cx+'" y="'+(y(0)-8)+'">no records</text>';
+    } else {
+      let acc = 0;
+      PESTS.forEach(p=>{
+        const v = m.byPest[p.k]; if(!v) return;
+        const y1 = y(acc + v), h = y(acc) - y1; acc += v;
+        s += '<rect x="'+x+'" y="'+y1+'" width="'+bw+'" height="'+h+'" fill="'+PEST_COLORS[p.k]+'"><title>'+p.l+': '+v+'</title></rect>';
+      });
+      s += '<text class="bar-t" x="'+cx+'" y="'+(y(m.total)-6)+'">'+m.total+'</text>';
+    }
+    s += '<text class="bar-m" x="'+cx+'" y="'+(H-12)+'">'+monthLabel(m.month)+'</text>';
+  });
+  return s + '</svg>';
+}
+
+let trendLoaded = false, lastTrend = null;
+
+async function showTrend(){
+  const year = parseInt(el('trYear').value, 10);
+  const qBtn = document.querySelector('#trQuarter button.active');
+  if(!year || !qBtn){ el('trendOut').innerHTML = '<div class="empty-note">Pick a year and a quarter.</div>'; return; }
+  const q = +qBtn.dataset.q, mode = el('trCompare').value;
+  el('trendOut').innerHTML = '<div class="empty-note">Loading...</div>';
+  let cy = null, cq = null;
+  if(mode === 'prev'){ cq = q===1 ? 4 : q-1; cy = q===1 ? year-1 : year; }
+  if(mode === 'ly'){ cq = q; cy = year-1; }
+  const [cur, cmp] = await Promise.all([ loadQuarterStats(year,q), cmpPromise(cy,cq) ]);
+  const svc = await extListMonths(qMonths(year,q));
+  trendLoaded = true;
+  lastTrend = {cur, cmp, svc};
+  renderTrend(lastTrend);
+}
+function cmpPromise(cy, cq){ return cy ? loadQuarterStats(cy, cq) : Promise.resolve(null); }
+
+function trendAlerts(cur){
+  const out = [];
+  cur.months.forEach(m=>{
+    Object.keys(m.areaHits).forEach(a=>{
+      if(m.areaHits[a] >= 3) out.push(escapeHtml(a) + ': findings on ' + m.areaHits[a] + ' visits in ' + monthLabel(m.month));
+    });
+  });
+  const withData = cur.months.filter(m=> m.weeks > 0);
+  if(withData.length >= 2){
+    PESTS.forEach(p=>{
+      if(withData.every(m=> m.byPest[p.k] > 0)) out.push(p.l + ' found in every recorded month of this quarter');
+    });
+  }
+  return out;
+}
+
+function trendTable(cur, cmp){
+  let h = '<table class="tr-tbl"><thead><tr><th>Month</th>' + PESTS.map(p=>'<th>'+p.l+'</th>').join('') + '<th>Total</th><th>Weeks recorded</th><th>Visits dated</th></tr></thead><tbody>';
+  cur.months.forEach(m=>{
+    h += '<tr><td>'+monthLabel(m.month)+'</td>' + PESTS.map(p=>'<td>'+m.byPest[p.k]+'</td>').join('') + '<td><b>'+m.total+'</b></td><td>'+m.weeks+'</td><td>'+m.visits+'</td></tr>';
+  });
+  h += '<tr class="sum"><td>'+qLabel(cur.year,cur.q)+'</td>' + PESTS.map(p=>'<td>'+cur.byPest[p.k]+'</td>').join('') + '<td>'+cur.total+'</td><td>'+cur.weeks+'</td><td>'+cur.visits+'</td></tr>';
+  if(cmp){
+    h += '<tr><td>'+qLabel(cmp.year,cmp.q)+'</td>' + PESTS.map(p=>'<td>'+cmp.byPest[p.k]+'</td>').join('') + '<td>'+cmp.total+'</td><td>'+cmp.weeks+'</td><td>'+cmp.visits+'</td></tr>';
+    h += '<tr><td>Change</td>' + PESTS.map(p=>'<td>'+deltaHtml(cur.byPest[p.k], cmp.byPest[p.k])+'</td>').join('') + '<td>'+deltaHtml(cur.total, cmp.total)+'</td><td></td><td></td></tr>';
+  }
+  return h + '</tbody></table>';
+}
+
+
+function contractorRows(cur, svc){
+  return cur.months.map((m,i)=>{
+    const recs = (svc[i]||[]).map(normExt), byArea = {};
+    let total = 0;
+    recs.forEach(r=> r.areas.forEach(a=>{ const n = findsCount(a.finds); if(n > 0){ byArea[a.name] = (byArea[a.name]||0) + n; total += n; } }));
+    return {month:m.month, services:recs.length, internal:m.total, contractor:total, missed:Object.keys(byArea).filter(a=> !m.areaHits[a])};
+  });
+}
+function contractorTable(rows, cls){
+  return '<table class="' + cls + '"><thead><tr><th>Month</th><th>Services</th><th>Internal findings</th><th>Contractor findings</th><th>Found by contractor only</th></tr></thead><tbody>' +
+    rows.map(r=>'<tr><td>' + monthLabel(r.month) + '</td><td>' + r.services + '</td><td>' + r.internal + '</td><td>' + (r.services ? r.contractor : '-') + '</td><td style="text-align:left;">' + (r.missed.length ? r.missed.map(escapeHtml).join('; ') : '-') + '</td></tr>').join('') + '</tbody></table>';
+}
+
+function hotspotList(cur, n){
+  const arr = Object.keys(cur.areaHits).map(a=>({a, n:cur.areaHits[a]})).sort((x,y)=> y.n - x.n).slice(0, n);
+  return arr;
+}
+
+function renderTrend(t){
+  const {cur, cmp, svc} = t;
+  const label = qLabel(cur.year, cur.q);
+  if(cur.weeks === 0){
+    el('trendOut').innerHTML = '<div class="empty-note">No inspection records for ' + label + '.</div>';
+    return;
+  }
+  const topPest = PESTS.slice().sort((a,b)=> cur.byPest[b.k] - cur.byPest[a.k])[0];
+  const hot = hotspotList(cur, 5);
+  const alerts = trendAlerts(cur);
+  const inProg = isQuarterInProgress(cur.year, cur.q);
+  const svcAll = svc.reduce((s,x)=> s + x.length, 0);
+  let h = '';
+  h += '<div class="tr-cards">';
+  h += '<div class="tr-card"><div class="k">Total findings ' + label + '</div><div class="v">' + cur.total + '</div><div class="s">' + (cmp ? deltaHtml(cur.total, cmp.total) + ' vs ' + qLabel(cmp.year, cmp.q) : 'no comparison') + '</div></div>';
+  h += '<div class="tr-card"><div class="k">Most frequent pest</div><div class="v">' + (cur.total ? topPest.l : '-') + '</div><div class="s">' + (cur.total ? cur.byPest[topPest.k] + ' findings' : 'nothing found') + '</div></div>';
+  h += '<div class="tr-card"><div class="k">Top hotspot</div><div class="v" style="font-size:15px;">' + (hot.length ? escapeHtml(hot[0].a) : '-') + '</div><div class="s">' + (hot.length ? hot[0].n + ' visits with findings' : 'no findings') + '</div></div>';
+  h += '<div class="tr-card"><div class="k">External services</div><div class="v">' + svcAll + '</div><div class="s">logged in this quarter</div></div>';
+  h += '</div>';
+  if(inProg) h += '<div class="apibar" style="margin-bottom:14px;">This quarter is still in progress, so totals are partial. Compare with care.</div>';
+
+  h += '<div class="tr-sec"><h3>Findings per month</h3>' + barChartSvg(cur.months);
+  h += '<div class="tr-legend">' + PESTS.map(p=>'<span><i style="background:'+PEST_COLORS[p.k]+'"></i>'+p.l+'</span>').join('') + '</div>';
+  h += '<div style="margin-top:10px;">';
+  cur.months.forEach((m,i)=>{
+    const d = svc[i] || [];
+    h += '<div class="svc-line"><b>' + monthLabel(m.month) + ' external service:</b> ' + (d.length ? d.map(r=> escapeHtml(r.date) + (r.company ? ' (' + escapeHtml(r.company) + ')' : '') + (r.serviceType === 'Ad hoc' ? ' [Ad hoc' + ((r.treatments||[]).length ? ': ' + escapeHtml(r.treatments.join(', ')) : '') + ']' : '')).join(', ') : 'none logged') + '</div>';
+  });
+  h += '</div></div>';
+
+  h += '<div class="tr-sec"><h3>Pest type by month</h3><div class="tr-scroll">' + trendTable(cur, cmp) + '</div></div>';
+
+  if(svcAll > 0) h += '<div class="tr-sec"><h3>Internal vs contractor findings</h3><div class="tr-scroll">' + contractorTable(contractorRows(cur, svc), 'tr-tbl') + '</div><div class="hint">"Found by contractor only" lists areas where the contractor found pests in that month but internal inspection found none.</div></div>';
+
+  h += '<div class="tr-sec"><h3>Area hotspots (visits with findings)</h3>';
+  if(hot.length){
+    const mx = hot[0].n;
+    hot.forEach(x=>{ h += '<div class="hot"><span>' + escapeHtml(x.a) + '</span><div class="track"><div class="fill" style="width:' + Math.round(x.n/mx*100) + '%"></div></div><b>' + x.n + '</b></div>'; });
+  } else h += '<div class="ok-item">No findings in any area this quarter.</div>';
+  h += '</div>';
+
+  h += '<div class="tr-sec"><h3>Alerts</h3>';
+  h += alerts.length ? alerts.map(a=>'<div class="alert-item">' + a + '</div>').join('') : '<div class="ok-item">No repeated hotspots this quarter.</div>';
+  h += '</div>';
+
+  h += '<div class="actionbar"><button class="btn" id="trPrintBtn">Print trend summary</button></div>';
+  el('trendOut').innerHTML = h;
+  el('trPrintBtn').addEventListener('click', ()=>{
+    el('printRoot').innerHTML = buildTrendPrint(lastTrend);
+    window.print();
+  });
+}
+
+function buildTrendPrint(t){
+  const {cur, cmp, svc} = t;
+  const hot = hotspotList(cur, 5);
+  const alerts = trendAlerts(cur);
+  const tbl = trendTable(cur, cmp).replace('class="tr-tbl"', 'class="xtable"').replace(/<span class="delta[^"]*">/g,'<span>');
+  return '<div class="ppage"><div class="xhead"><b>HEXA FOOD SDN BHD (HEXA 3)</b><span>INTERNAL PEST CONTROL TREND SUMMARY — ' + escapeHtml(qLabel(cur.year,cur.q)) + '</span></div>' +
+    '<div class="xmeta"><span>Based on form HX3-F35 records</span><span>Printed: ' + todayStr() + '</span></div>' +
+    tbl +
+    (svc.some(x=> x.length) ? '<p style="font-size:11px;margin:10px 0 4px;"><b>Internal vs contractor findings</b></p>' + contractorTable(contractorRows(cur, svc), 'xtable') : '') +
+    '<p style="font-size:11px;margin:10px 0 4px;"><b>Top area hotspots</b></p>' +
+    (hot.length ? '<table class="xtable"><tr><th>Area</th><th>Visits with findings</th></tr>' + hot.map(x=>'<tr><td class="xa">'+escapeHtml(x.a)+'</td><td>'+x.n+'</td></tr>').join('') + '</table>' : '<div style="font-size:11px;">No findings.</div>') +
+    '<p style="font-size:11px;margin:10px 0 4px;"><b>External service visits</b></p>' +
+    '<div style="font-size:11px;">' + cur.months.map((m,i)=> monthLabel(m.month) + ': ' + ((svc[i]||[]).length ? svc[i].map(r=>escapeHtml(r.date)).join(', ') : 'none logged')).join('<br>') + '</div>' +
+    '<p style="font-size:11px;margin:10px 0 4px;"><b>Alerts</b></p>' +
+    '<div style="font-size:11px;">' + (alerts.length ? alerts.join('<br>') : 'No repeated hotspots.') + '</div></div>';
+}
+
+// trend controls
+(function(){
+  const n = nowQuarter();
+  el('trYear').value = n.year;
+  document.querySelectorAll('#trQuarter button').forEach(b=> b.classList.toggle('active', +b.dataset.q === n.q));
+  el('trQuarter').addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    document.querySelectorAll('#trQuarter button').forEach(x=> x.classList.toggle('active', x === b));
+  });
+  el('trShowBtn').addEventListener('click', showTrend);
+  document.querySelector('[data-panel="trends"]').addEventListener('click', ()=>{ if(!trendLoaded) showTrend(); });
+})();
+
+// ---------------- External service: data layer ----------------
+async function extGetJson(qs){
+  try{
+    const res = await fetch(extApiUrl + '?' + qs);
+    const t = await res.text();
+    try{ return JSON.parse(t); }catch(e){ console.error('[ext] non-JSON response:', t); return null; }
+  }catch(e){ console.error('[ext] fetch failed:', e); return null; }
+}
+async function extPost(body){
+  try{
+    const res = await fetch(extApiUrl, {method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(body)});
+    const t = await res.text(); let j;
+    try{ j = JSON.parse(t); }catch(e){ console.error('[ext] non-JSON response:', t); return {ok:false, reason:'bad-response', raw:t}; }
+    if(j.ok === false) return {ok:false, reason:'script-error', raw:j.error};
+    return Object.assign({ok:true}, j);
+  }catch(e){ console.error('[ext] post failed:', e); return {ok:false, reason:'fetch-error', raw:String(e)}; }
+}
+async function extListMonth(m){
+  if(extApiUrl){
+    const j = await extGetJson('action=list&month=' + encodeURIComponent(m));
+    if(j && j.ok) return j.records || [];
+  }
+  return Object.values(extStore).filter(r=> r.month === m);
+}
+async function extListMonths(months){ return Promise.all(months.map(extListMonth)); }
+async function extSaveRecord(rec){
+  extStore[rec.id] = rec;
+  if(!extApiUrl) return {ok:false, reason:'no-url'};
+  return extPost({action:'save', data:rec});
+}
+async function extDeleteRecord(id){
+  delete extStore[id];
+  if(!extApiUrl) return {ok:false, reason:'no-url'};
+  return extPost({action:'delete', id});
+}
+async function extLoadProducts(){
+  let list = [];
+  try{ list = JSON.parse(safeGet('pest_ext_products') || '[]'); }catch(e){}
+  if(extApiUrl){
+    const j = await extGetJson('action=products');
+    if(j && j.ok && Array.isArray(j.products)){ list = j.products; safeSet('pest_ext_products', JSON.stringify(list)); }
+  }
+  extProducts = list;
+  el('extProductsInput').value = list.join('\n');
+  renderExtChips();
+}
+
+// downscale photos, pass PDFs through (max ~2.5 MB)
+function readAsDataUrl(blob){
+  return new Promise((res, rej)=>{ const r = new FileReader(); r.onload = ()=> res(r.result); r.onerror = ()=> rej(r.error); r.readAsDataURL(blob); });
+}
+async function filePayload(file){
+  if(file.type.indexOf('image/') === 0){
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await new Promise(r=> c.toBlob(r, 'image/jpeg', 0.75));
+    const url = await readAsDataUrl(blob);
+    return {name: file.name.replace(/\.[^.]+$/, '') + '.jpg', mime:'image/jpeg', base64: url.split(',')[1]};
+  }
+  if(file.type === 'application/pdf'){
+    if(file.size > 2.5 * 1024 * 1024) throw new Error('PDF is larger than 2.5 MB. Please attach a smaller file or a photo of the report.');
+    const url = await readAsDataUrl(file);
+    return {name: file.name, mime:'application/pdf', base64: url.split(',')[1]};
+  }
+  throw new Error('Please attach a photo or a PDF.');
+}
+
+// ---------------- External service: form ----------------
+// Only "Factory perimeter (outside)" uses TRBS; every other area uses TRGS.
+const TREAT_AREA = AREAS[0];
+function treatKey(name){ return name === TREAT_AREA ? 'trbs' : 'trgs'; }
+function treatLabel(name){ return name === TREAT_AREA ? 'TRBS' : 'TRGS'; }
+function blankFinds(){ const f = {}; PESTS.forEach(p=> f[p.k] = ''); return f; }
+function findsCount(finds){
+  let n = 0;
+  PESTS.forEach(p=>{
+    const v = String((finds||{})[p.k] || '').trim(); if(!v) return;
+    n += p.k === 'others' ? 1 : (/^\d+$/.test(v) ? parseInt(v,10) : 1);
+  });
+  return n;
+}
+function findsText(finds){
+  const out = [];
+  PESTS.forEach(p=>{
+    const v = String((finds||{})[p.k] || '').trim();
+    if(v && !(p.k !== 'others' && /^0+$/.test(v))) out.push(p.l + ' ' + v);
+  });
+  return out.join(', ');
+}
+function normExt(rec){
+  rec.actions = (rec.actions || []).map(a=>({text:a.text||'', pic:a.pic||'', due:a.due||'', status:a.status==='Closed'?'Closed':'Open', closedDate:a.closedDate||''}));
+  rec.areas = AREAS.map(n=>{
+    const a = (rec.areas || []).find(x=> x.name === n) || {};
+    return {name:n, spray:!!a.spray, trbs:!!a.trbs, trgs:!!a.trgs, finds:Object.assign(blankFinds(), a.finds || {}), remarks:a.remarks || ''};
+  });
+  rec.products = rec.products || [];
+  rec.serviceType = rec.serviceType === 'Ad hoc' ? 'Ad hoc' : 'Routine';
+  rec.treatments = rec.treatments || [];
+  rec.details = rec.details || '';
+  return rec;
+}
+function blankExt(){
+  return normExt({id:'', date:todayStr(), month:'', company:safeGet('pest_ext_company'), technician:'',
+    areas:[], products:[], actions:[], reportName:'', reportUrl:'', receivedSignature:'', receivedName:'', receivedPos:''});
+}
+let extState = blankExt(), extFile = null, extOrigId = null, extRecent = [];
+
+function setExtStatus(text, kind){
+  const p = el('extStatus'); p.textContent = text;
+  p.className = 'status-pill' + (kind === 'unsaved' ? ' unsaved' : '');
+}
+function extDirty(){ setExtStatus('Unsaved', 'unsaved'); }
+
+function renderExtAreas(){
+  el('extAreaList').innerHTML = extState.areas.map((a,i)=>{
+    const tk = treatKey(a.name), tl = treatLabel(a.name);
+    return '<div class="card"><div class="card-name">' + escapeHtml(a.name) + '</div><div class="xrow">' +
+      '<button type="button" class="tick ' + (a.spray?'on':'') + '" data-i="' + i + '" data-k="spray">Spray</button>' +
+      '<button type="button" class="tick ' + (a[tk]?'on':'') + '" data-i="' + i + '" data-k="' + tk + '">' + tl + '</button>' +
+      '<input class="remarks-input" placeholder="Remarks" value="' + escapeAttr(a.remarks||'') + '" data-i="' + i + '" data-role="xrem"></div>' +
+      '<div class="hint" style="margin:8px 0 4px;">Contractor findings (quantity, leave empty if none)</div>' +
+      '<div class="pestrow">' + PESTS.map(p=>{
+        const v = String((a.finds||{})[p.k] || ''), isO = p.k === 'others';
+        return '<div class="qtybox ' + (v?'on':'') + '"><input class="qtyinput" type="text" inputmode="' + (isO?'text':'numeric') + '" placeholder="-" maxlength="' + (isO?12:4) + '" value="' + escapeAttr(v) + '" data-xi="' + i + '" data-xp="' + p.k + '"><span class="lab">' + p.l + '</span></div>';
+      }).join('') + '</div></div>';
+  }).join('');
+}
+function renderExtChips(){
+  const names = extProducts.slice();
+  extState.products.forEach(p=>{ if(names.indexOf(p) < 0) names.push(p); });
+  el('extChips').innerHTML = names.length
+    ? names.map(n=>'<button type="button" class="chip ' + (extState.products.indexOf(n)>=0?'on':'') + '" data-p="' + escapeAttr(n) + '">' + escapeHtml(n) + '</button>').join('')
+    : '<div class="hint">No products in the list yet. QA can add them under the Google Sheet tab.</div>';
+}
+function renderExtActions(){
+  const box = el('extActions');
+  if(!extState.actions.length){ box.innerHTML = '<div class="hint">No recommendations for this service.</div>'; return; }
+  box.innerHTML = extState.actions.map((a,i)=>
+    '<div class="card" style="margin-bottom:8px;"><input class="remarks-input" style="margin-top:0;" placeholder="Recommendation (e.g. seal gap at back door)" value="' + escapeAttr(a.text) + '" data-ai="' + i + '" data-af="text">' +
+    '<div class="xrow" style="margin-top:6px;"><input class="remarks-input" placeholder="PIC" value="' + escapeAttr(a.pic) + '" data-ai="' + i + '" data-af="pic">' +
+    '<input type="date" class="remarks-input" value="' + escapeAttr(a.due) + '" data-ai="' + i + '" data-af="due" title="Due date">' +
+    '<button type="button" class="tick ' + (a.status==='Closed'?'on':'') + '" data-ai="' + i + '" data-act="toggle">' + a.status + '</button>' +
+    '<button type="button" class="btn btn-sm btn-danger" data-ai="' + i + '" data-act="del">Remove</button></div></div>').join('');
+}
+function renderExtReport(){
+  let h = '';
+  if(extState.reportUrl) h += 'Attached: <a class="xlink" href="' + escapeAttr(extState.reportUrl) + '" target="_blank" rel="noopener">' + escapeHtml(extState.reportName || 'report') + '</a><br>';
+  else if(extState.reportName) h += 'Attached: ' + escapeHtml(extState.reportName) + '<br>';
+  if(extFile) h += 'Ready to upload on Save: ' + escapeHtml(extFile.name);
+  if(!h) h = 'Optional. Attach a photo or PDF of the contractor\'s report. It uploads when you tap Save.';
+  el('extReportInfo').innerHTML = h;
+}
+function renderExtForm(){
+  el('extDate').value = extState.date || '';
+  el('extCompany').value = extState.company || '';
+  el('extTech').value = extState.technician || '';
+  el('extRName').value = extState.receivedName || '';
+  el('extRPos').value = extState.receivedPos || '';
+  el('extFile').value = '';
+  el('extDetails').value = extState.details || '';
+  renderExtType(); renderTreatChips();
+  renderExtAreas(); renderExtChips(); renderExtActions(); renderExtReport(); renderExtOpen();
+}
+function newExt(){
+  extState = blankExt(); extFile = null; extOrigId = null;
+  renderExtForm(); setExtStatus('New service');
+}
+
+// ----- status banner + open recommendations from earlier services -----
+async function loadRecentExt(n){
+  const now = new Date(), months = [];
+  for(let i=0;i<n;i++){ const d = new Date(now.getFullYear(), now.getMonth()-i, 1); months.push(d.getFullYear() + '-' + pad2(d.getMonth()+1)); }
+  const lists = await extListMonths(months);
+  return [].concat.apply([], lists).map(normExt).filter(r=> r.date).sort((a,b)=> b.date.localeCompare(a.date));
+}
+function isOverdue(a){ return a.status !== 'Closed' && a.due && a.due < todayStr(); }
+async function refreshExtStatus(){
+  extRecent = await loadRecentExt(6);
+  renderExtBanner(); renderExtOpen();
+}
+function renderExtBanner(){
+  const b = el('extBanner'), cur = todayStr().slice(0,7);
+  let open = 0, over = 0;
+  extRecent.forEach(r=> r.actions.forEach(a=>{ if(a.status !== 'Closed'){ open++; if(isOverdue(a)) over++; } }));
+  const has = extRecent.some(r=> r.month === cur);
+  let txt;
+  if(!extRecent.length) txt = 'No external service logged yet.';
+  else {
+    const last = extRecent[0], days = Math.floor((new Date(todayStr()) - new Date(last.date)) / 86400000);
+    txt = 'Last service: <b>' + escapeHtml(last.date) + '</b> (' + (days <= 0 ? 'today' : days + ' day' + (days===1?'':'s') + ' ago') + ').';
+  }
+  if(!has) txt += ' <b>No service logged for ' + monthLabel(cur) + ' yet.</b>';
+  txt += ' Open recommendations: <b>' + open + '</b>' + (over ? ' (' + over + ' overdue)' : '') + '.';
+  b.className = 'apibar' + ((has && !over) ? ' ok' : '');
+  b.innerHTML = txt;
+}
+function renderExtOpen(){
+  const box = el('extOpenList'), curId = extOrigId || extState.id, items = [];
+  extRecent.forEach(r=>{ if(r.id === curId) return; r.actions.forEach((a,idx)=>{ if(a.status !== 'Closed') items.push({r, idx, a}); }); });
+  box._items = items;
+  if(!items.length){ box.innerHTML = ''; return; }
+  box.innerHTML = '<div class="signoff-title">Still open from earlier services</div>' + items.map((x,k)=>
+    '<div class="recrow" style="flex-wrap:wrap;"><span class="mono">' + escapeHtml(x.r.date) + '</span><span>' + escapeHtml(x.a.text || '(no text)') + '</span>' +
+    (x.a.pic ? '<span>PIC: ' + escapeHtml(x.a.pic) + '</span>' : '') +
+    (x.a.due ? (isOverdue(x.a) ? '<span class="verified-badge" style="color:var(--red);border-color:var(--red);background:var(--red-100);">OVERDUE ' + escapeHtml(x.a.due) + '</span>' : '<span class="mono">Due ' + escapeHtml(x.a.due) + '</span>') : '') +
+    '<span class="btns"><button class="btn btn-sm btn-verify" data-k="' + k + '">Mark closed</button></span></div>').join('') +
+    '<div style="height:10px;"></div>';
+}
+el('extOpenList').addEventListener('click', async e=>{
+  const b = e.target.closest('button[data-k]'); if(!b) return;
+  const it = el('extOpenList')._items[+b.dataset.k]; if(!it) return;
+  it.a.status = 'Closed'; it.a.closedDate = todayStr();
+  const res = await extSaveRecord(it.r);
+  if(!res.ok && res.reason !== 'no-url'){ it.a.status = 'Open'; it.a.closedDate = ''; alert('Could not save. Check the Console (F12) or the connection.'); }
+  refreshExtStatus();
+});
+
+// ----- form events -----
+el('extAreaList').addEventListener('click', e=>{
+  const b = e.target.closest('.tick'); if(!b) return;
+  const a = extState.areas[+b.dataset.i], k = b.dataset.k;
+  a[k] = !a[k]; b.classList.toggle('on', a[k]); extDirty();
+});
+el('extAreaList').addEventListener('input', e=>{
+  const t = e.target;
+  if(t.dataset.role === 'xrem'){ extState.areas[+t.dataset.i].remarks = t.value; extDirty(); }
+  else if(t.classList.contains('qtyinput')){
+    let v = t.value;
+    if(t.dataset.xp !== 'others'){ v = v.replace(/[^0-9]/g,''); if(v !== t.value) t.value = v; }
+    extState.areas[+t.dataset.xi].finds[t.dataset.xp] = v;
+    t.closest('.qtybox').classList.toggle('on', v !== ''); extDirty();
+  }
+});
+el('extChips').addEventListener('click', e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  const n = b.dataset.p, i = extState.products.indexOf(n);
+  if(i >= 0) extState.products.splice(i,1); else extState.products.push(n);
+  b.classList.toggle('on', i < 0); extDirty();
+});
+const EXT_TREATMENTS = ['Fumigation','Fogging','Baiting','Rodent proofing','Other'];
+function renderExtType(){
+  document.querySelectorAll('#extTypePick button').forEach(b=> b.classList.toggle('active', b.dataset.t === extState.serviceType));
+}
+function renderTreatChips(){
+  const names = EXT_TREATMENTS.slice();
+  extState.treatments.forEach(t=>{ if(names.indexOf(t) < 0) names.push(t); });
+  el('extTreatChips').innerHTML = names.map(n=>'<button type="button" class="chip ' + (extState.treatments.indexOf(n)>=0?'on':'') + '" data-t="' + escapeAttr(n) + '">' + escapeHtml(n) + '</button>').join('');
+}
+el('extTypePick').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  extState.serviceType = b.dataset.t; renderExtType(); extDirty();
+});
+el('extTreatChips').addEventListener('click', e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  const n = b.dataset.t, i = extState.treatments.indexOf(n);
+  if(i >= 0) extState.treatments.splice(i,1); else extState.treatments.push(n);
+  b.classList.toggle('on', i < 0); extDirty();
+});
+el('extDetails').addEventListener('input', e=>{ extState.details = e.target.value; extDirty(); });
+el('extAddActionBtn').addEventListener('click', ()=>{
+  extState.actions.push({text:'', pic:'', due:'', status:'Open', closedDate:''}); renderExtActions(); extDirty();
+});
+el('extActions').addEventListener('input', e=>{
+  const t = e.target; if(!t.dataset.af) return;
+  extState.actions[+t.dataset.ai][t.dataset.af] = t.value; extDirty();
+});
+el('extActions').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-act]'); if(!b) return;
+  const i = +b.dataset.ai, a = extState.actions[i];
+  if(b.dataset.act === 'toggle'){ a.status = a.status === 'Closed' ? 'Open' : 'Closed'; a.closedDate = a.status === 'Closed' ? todayStr() : ''; }
+  else extState.actions.splice(i,1);
+  renderExtActions(); extDirty();
+});
+[['extDate','date'],['extCompany','company'],['extTech','technician'],['extRName','receivedName'],['extRPos','receivedPos']].forEach(pair=>{
+  el(pair[0]).addEventListener('input', e=>{
+    extState[pair[1]] = e.target.value;
+    if(pair[1] === 'receivedName') extState.receivedSignature = e.target.value;   // signature follows the name
+    extDirty();
+  });
+});
+el('extFile').addEventListener('change', e=>{ extFile = e.target.files[0] || null; renderExtReport(); extDirty(); });
+el('extAllSprayBtn').addEventListener('click', ()=>{ extState.areas.forEach(a=> a.spray = true); renderExtAreas(); extDirty(); });
+el('extAllTrbsBtn').addEventListener('click', ()=>{ extState.areas.forEach(a=> a[treatKey(a.name)] = true); renderExtAreas(); extDirty(); });
+el('extClearBtn').addEventListener('click', ()=>{ extState.areas.forEach(a=>{ a.spray = false; a.trbs = false; a.trgs = false; }); renderExtAreas(); extDirty(); });
+el('extNewBtn').addEventListener('click', ()=>{ newExt(); refreshExtStatus(); });
+
+el('extCopyBtn').addEventListener('click', async ()=>{
+  const recs = (await loadRecentExt(4)).filter(r=> r.date < (extState.date || '9999') && r.id !== extState.id);
+  if(!recs.length){ alert('No earlier service found to copy from.'); return; }
+  const last = recs[0];
+  extState.company = last.company || extState.company;
+  extState.technician = last.technician || extState.technician;
+  extState.products = last.products.slice();
+  extState.areas.forEach(a=>{
+    const m = last.areas.find(x=> x.name === a.name);
+    a.spray = !!(m && m.spray); a.trbs = !!(m && m.trbs); a.trgs = !!(m && m.trgs);
+  });
+  renderExtForm(); extDirty();
+});
+
+el('extSaveBtn').addEventListener('click', async ()=>{
+  if(!extState.date){ alert('Please pick the service date.'); return; }
+  setExtStatus('Saving...', 'unsaved');
+  if(extFile){
+    if(!extApiUrl){ alert('Connect the External Service URL first (Google Sheet tab) to upload the report. Saving the rest on this device only.'); }
+    else{
+      try{
+        const p = await filePayload(extFile);
+        p.name = extState.date + '_' + p.name;
+        const up = await extPost({action:'upload', name:p.name, mime:p.mime, base64:p.base64});
+        if(!up.ok){ setExtStatus('Report upload failed', 'unsaved'); console.error('[ext] upload failed', up); alert('Could not upload the report. Check the Console (F12) or the connection.'); return; }
+        extState.reportUrl = up.url; extState.reportName = p.name; extFile = null; renderExtReport();
+      }catch(err){ setExtStatus('Report not attached', 'unsaved'); alert(err.message || String(err)); return; }
+    }
+  }
+  extState.month = extState.date.slice(0,7);
+  if(extOrigId && extOrigId.slice(0,10) === extState.date){ extState.id = extOrigId; }
+  else {
+    // several services can happen on the same day (e.g. routine + ad hoc), so ids get a suffix
+    const taken = (await extListMonth(extState.month)).map(r=> r.id);
+    let id = extState.date, n = 2;
+    while(taken.indexOf(id) >= 0){ id = extState.date + '-' + n++; }
+    extState.id = id;
+  }
+  const res = await extSaveRecord(extState);
+  if(res.ok){
+    if(extOrigId && extOrigId !== extState.id){ await extDeleteRecord(extOrigId); }
+    extOrigId = extState.id;
+    if(extState.company) safeSet('pest_ext_company', extState.company);
+    setExtStatus('Saved online ✓');
+  } else if(res.reason === 'no-url'){ extOrigId = extState.id; setExtStatus('Saved on this device only', 'unsaved'); }
+  else { setExtStatus('Save failed, see Console (F12)', 'unsaved'); console.error('[ext] save failed:', res.reason, res.raw || ''); }
+  refreshExtStatus();
+});
+
+el('extDeleteBtn').addEventListener('click', async ()=>{
+  const id = extOrigId || extState.id;
+  if(!id){ newExt(); return; }
+  if(!confirm('Delete the external service of ' + id + '? This cannot be undone.')) return;
+  const res = await extDeleteRecord(id);
+  if(res.ok || res.reason === 'no-url'){ newExt(); refreshExtStatus(); }
+  else alert('Could not delete. Check the Console (F12) or the connection.');
+});
+
+function buildExtPrint(rec){
+  const rows = rec.areas.map(a=>{
+    const tk = treatKey(a.name);
+    return '<tr><td class="xa">' + escapeHtml(a.name) + '</td><td>' + (a.spray ? '✓' : '-') + '</td><td>' + (a[tk] ? '✓ ' + treatLabel(a.name) : '-') + '</td><td class="xr">' + escapeHtml(findsText(a.finds) || '-') + '</td><td class="xr">' + escapeHtml(a.remarks) + '</td></tr>';
+  }).join('');
+  const acts = rec.actions.length
+    ? '<table class="xtable" style="margin-top:8px;"><thead><tr><th>Contractor recommendation</th><th>PIC</th><th>Due</th><th>Status</th></tr></thead><tbody>' +
+      rec.actions.map(a=>'<tr><td class="xa">' + escapeHtml(a.text) + '</td><td>' + escapeHtml(a.pic) + '</td><td>' + escapeHtml(a.due) + '</td><td>' + a.status + '</td></tr>').join('') + '</tbody></table>'
+    : '';
+  const sigName = rec.receivedName || rec.receivedSignature;
+  const sig = sigName ? '<span style="font-family:\'Dancing Script\',cursive;font-size:20px;color:#1B4A36;">' + escapeHtml(sigName) + '</span>' : '';
+  return '<div class="ppage"><div class="xhead"><b>HEXA FOOD SDN BHD (HEXA 3)</b><span>EXTERNAL PEST CONTROL SERVICE RECORD</span></div>' +
+    '<div class="xmeta"><span>Date: <b>' + escapeHtml(rec.date) + '</b></span><span>Company: <b>' + escapeHtml(rec.company) + '</b></span><span>Technician: <b>' + escapeHtml(rec.technician) + '</b></span></div>' +
+    '<p style="font-size:10.5px;margin:0 0 6px;"><b>Type:</b> ' + escapeHtml(rec.serviceType) + (rec.treatments.length ? ' &middot; <b>Treatment:</b> ' + escapeHtml(rec.treatments.join(', ')) : '') + (rec.details ? '<br><b>Details:</b> ' + escapeHtml(rec.details) : '') + '</p>' +
+    '<table class="xtable"><colgroup><col style="width:28%"><col style="width:8%"><col style="width:12%"><col style="width:24%"><col style="width:28%"></colgroup><thead><tr><th>Areas treated</th><th>Spray</th><th>TRBS / TRGS</th><th>Contractor findings</th><th>Remarks</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+    '<p style="font-size:9.5px;margin:4px 0 0;">TRBS: Factory perimeter (outside). TRGS: all other areas.</p>' +
+    '<p style="font-size:10.5px;margin:8px 0 0;"><b>Products used:</b> ' + (rec.products.length ? escapeHtml(rec.products.join(', ')) : '-') + '</p>' + acts +
+    '<div class="xsign"><div><div>Received by: ' + sig + '</div><div>Name: ' + escapeHtml(rec.receivedName) + '</div><div>Position: ' + escapeHtml(rec.receivedPos) + '</div></div><div></div></div></div>';
+}
+el('extPrintBtn').addEventListener('click', ()=>{
+  el('printRoot').innerHTML = buildExtPrint(extState);
+  window.print();
+});
+
+// ---------------- External service: records list ----------------
+el('xsForm').addEventListener('click', ()=>{
+  el('xsForm').classList.add('active'); el('xsList').classList.remove('active');
+  el('extFormWrap').style.display = ''; el('extListWrap').style.display = 'none';
+});
+el('xsList').addEventListener('click', ()=>{
+  el('xsList').classList.add('active'); el('xsForm').classList.remove('active');
+  el('extFormWrap').style.display = 'none'; el('extListWrap').style.display = '';
+});
+el('extLoadBtn').addEventListener('click', ()=>{
+  const m = el('extReportMonth').value;
+  if(!m){ el('extEntryList').innerHTML = '<div class="empty-note">Please select a month first.</div>'; return; }
+  loadExtRecords(m);
+});
+async function loadExtRecords(m){
+  const box = el('extEntryList');
+  box.innerHTML = '<div class="empty-note">Loading...</div>';
+  const recs = (await extListMonth(m)).map(normExt);
+  if(!recs.length){ box.innerHTML = '<div class="empty-note">No external service logged for this month.</div>'; return; }
+  recs.sort((a,b)=> a.date.localeCompare(b.date));
+  box.innerHTML = '';
+  recs.forEach(rec=>{
+    const ns = rec.areas.filter(a=>a.spray).length, nt = rec.areas.filter(a=>a.trbs || a.trgs).length;
+    const nf = rec.areas.reduce((s,a)=> s + findsCount(a.finds), 0), no = rec.actions.filter(a=> a.status !== 'Closed').length;
+    const row = document.createElement('div');
+    row.className = 'recrow'; row.style.flexWrap = 'wrap';
+    row.innerHTML = '<span class="mono"><b>' + escapeHtml(rec.date) + '</b></span>' + (rec.serviceType === 'Ad hoc' ? '<span class="verified-badge" style="color:var(--amber-800);border-color:var(--amber);background:var(--amber-100);">Ad hoc</span>' : '') + '<span>' + escapeHtml(rec.company||'') + '</span>' + (rec.treatments.length ? '<span>' + escapeHtml(rec.treatments.join(', ')) + '</span>' : '') +
+      '<span>Spray ' + ns + ' · TRBS/TRGS ' + nt + ' · Findings ' + nf + (no ? ' · Open actions ' + no : '') + '</span>' +
+      (rec.reportUrl ? '<a class="xlink" href="' + escapeAttr(rec.reportUrl) + '" target="_blank" rel="noopener">Report</a>' : '') +
+      '<span class="btns"><button class="btn btn-sm" data-act="open">Open</button><button class="btn btn-sm" data-act="print">Print</button><button class="btn btn-sm btn-danger" data-act="delete">Delete</button></span>';
+    row.querySelector('[data-act="open"]').addEventListener('click', ()=>{
+      extState = normExt(JSON.parse(JSON.stringify(rec))); extFile = null; extOrigId = rec.id;
+      renderExtForm(); setExtStatus('Existing service loaded');
+      el('xsForm').click();
+    });
+    row.querySelector('[data-act="print"]').addEventListener('click', ()=>{
+      el('printRoot').innerHTML = buildExtPrint(rec); window.print();
+    });
+    row.querySelector('[data-act="delete"]').addEventListener('click', async ()=>{
+      if(!confirm('Delete the external service of ' + rec.date + '? This cannot be undone.')) return;
+      const res = await extDeleteRecord(rec.id);
+      if(res.ok || res.reason === 'no-url'){ loadExtRecords(m); refreshExtStatus(); }
+      else alert('Could not delete. Check the Console (F12) or the connection.');
+    });
+    box.appendChild(row);
+  });
+}
+
+// ---------------- External service: settings ----------------
+el('extUrlInput').value = extApiUrl;
+el('saveExtUrlBtn').addEventListener('click', ()=>{
+  extApiUrl = el('extUrlInput').value.trim();
+  safeSet('pest_ext_url', extApiUrl);
+  extLoadProducts(); refreshExtStatus();
+  alert(extApiUrl ? 'Connected. External services will now save to your Google Sheet.' : 'URL cleared.');
+});
+el('saveProductsBtn').addEventListener('click', async ()=>{
+  const list = [];
+  el('extProductsInput').value.split('\n').forEach(s=>{ s = s.trim(); if(s && list.indexOf(s) < 0) list.push(s); });
+  extProducts = list; safeSet('pest_ext_products', JSON.stringify(list));
+  renderExtChips();
+  if(extApiUrl){
+    const res = await extPost({action:'saveProducts', products:list});
+    alert(res.ok ? 'Products saved.' : 'Saved on this device only. Could not reach the Google Sheet.');
+  } else alert('Saved on this device only. Connect the External Service URL to share the list.');
+});
+
+// ---------------- init ----------------
+el('extReportMonth').value = monthOf(todayStr());
+renderExtForm();
+extLoadProducts();
+refreshExtStatus();
+document.querySelector('[data-panel="ext"]').addEventListener('click', refreshExtStatus);
 
 // ---------------- Init ----------------
 el('reportMonth').value = state.month;
